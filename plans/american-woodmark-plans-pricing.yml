@@ -4,143 +4,39 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: American Woodmark
 providerId: american-woodmark
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
   - Cabinetry
   - Home Products
   - Construction
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+description: >-
+  American Woodmark does not publish public API plans or pricing. Customer integrations (home centers, homebuilders, dealers) are governed by EDI and bilateral trade agreements rather than a public API price list. Reconcile if a public API offering is launched.
+notes: >-
+  American Woodmark is a kitchen and bath cabinet manufacturer; it does not publish a public API developer portal with documented pricing or rate limits. Trading-partner integrations with home centers and homebuilders are governed by EDI and bilateral agreements. Reconcile if a public API is launched.
+sources:
+  - https://www.americanwoodmark.com
 plans:
-  - id: american-woodmark-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the American Woodmark API surface. Intended for evaluation, prototyping,
-      and low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://api.americanwoodmark.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://api.americanwoodmark.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: American Woodmark API
-  - id: american-woodmark-pro
-    name: Professional
-    type: paid
-    description: Production tier for American Woodmark. Provides higher quotas, priority support, and
-      access to the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://api.americanwoodmark.com
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://api.americanwoodmark.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: global
-        domains:
-          - https://api.americanwoodmark.com
-        unit: 1000
-        price: TBD
-        userMultiplied: false
-    elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: American Woodmark API
-  - id: american-woodmark-enterprise
-    name: Enterprise
+  - id: american-woodmark-overview
+    name: American Woodmark - Pricing Overview
     type: enterprise
-    description: Custom-negotiated tier for American Woodmark. Includes dedicated capacity, contractual
-      SLAs, security review, data residency options, and named technical account management.
+    description: >-
+      Placeholder plan reflecting that American Woodmark does not publish a public,
+      machine-readable API price list. Pricing is bespoke per engagement.
     entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
+      - label: API Access
+        name: api_access
+        type: flat
+        metric: varies
         limit: -1
-        timeFrame: month
-        geo: configurable
-        domains:
-          - https://api.americanwoodmark.com
+        timeFrame: usage
+        geo: global
         unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains:
-          - https://api.americanwoodmark.com
-        unit: 1
-        price: custom
+        price: contact sales
         userMultiplied: false
     elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: American Woodmark API
+      - name: Negotiated Access
+      - name: Bilateral Agreement
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
