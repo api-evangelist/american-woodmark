@@ -28,6 +28,8 @@ apis:
     description: >-
       The American Woodmark API provides access to platform services and data for enterprise integration and automation.
 common:
+  - type: DomainSecurity
+    url: security/american-woodmark-domain-security.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/american-woodmark
   - type: Website
