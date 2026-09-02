@@ -1,0 +1,60 @@
+# American Woodmark
+
+> American Woodmark Corporation (NASDAQ: AMWD) is one of the largest manufacturers of
+> kitchen, bath and home organization cabinetry in the United States, headquartered in
+> Winchester, Virginia. It sells through home centers, builders and independent dealers
+> under brands including Timberlake, Waypoint Living Spaces, Shenandoah and 1951 Cabinetry.
+> It is a manufacturer, not a software vendor: it publishes no developer program, no API
+> documentation and no machine-readable API contract.
+
+## What American Woodmark actually publishes for machines
+
+The single machine-readable contract American Woodmark serves anonymously is the OpenID
+Connect discovery document for its identity provider. There is no OpenAPI, AsyncAPI,
+GraphQL SDL, WSDL, Protobuf, MCP server or A2A agent card anywhere on its hosts.
+
+- [OpenID Connect discovery](https://id.woodmark.com/.well-known/openid-configuration): Live OIDC discovery document (HTTP 200, application/json). IdentityServer deployment. Advertises authorization_code, client_credentials, refresh_token, implicit, password and RFC 8628 device_code grants; PKCE with S256 and plain; RS256 id tokens; token introspection and revocation; front-channel and back-channel logout.
+- [JWKS](https://id.woodmark.com/.well-known/openid-configuration/jwks): RSA signing key set (HTTP 200).
+
+## Human surfaces
+
+- [American Woodmark](https://www.americanwoodmark.com): Corporate and consumer site. No developer section; the sitemap lists 140 URLs, none of them API documentation.
+- [Online Ordering](https://go.woodmark.com/onlineordering/orders): Dealer/customer ordering application (Angular single-page app). Requires a login; the backing API is not publicly documented.
+- [Order tracking](https://www.americanwoodmark.com/resources/track-order): Consumer order status lookup.
+- [Designer and customer resources](https://www.americanwoodmark.com/resources): Warranties, installation guides, order tracking.
+- [Articles](https://www.americanwoodmark.com/our-story/articles): Company news and design content.
+- [Investor relations](https://www.americanwoodmark.com/investors): Financial reporting, press releases, governance documents.
+- [Careers](https://www.americanwoodmark.com/careers)
+- [GitHub organization](https://github.com/AmericanWoodmark): Exists since 2018 with zero public repositories.
+
+## How integration actually happens
+
+Trading-partner integration with American Woodmark is EDI, not HTTP. Third-party VAN
+directories list American Woodmark as supporting ANSI ASC X12 transaction sets 850
+(Purchase Order), 856 (Ship Notice/Manifest) and 860 (Purchase Order Change Request).
+American Woodmark itself publishes no EDI implementation guide, no transaction-set list
+and no partner onboarding documentation — the relationship is established bilaterally.
+
+## Optional
+
+- [Privacy policy](https://www.americanwoodmark.com/privacy-policy)
+- [Terms of use](https://www.americanwoodmark.com/terms-of-use)
+- [LinkedIn](https://www.linkedin.com/company/american-woodmark)
+
+## Notes for agents
+
+- There is no callable public API. Do not attempt to construct requests against
+  `api.americanwoodmark.com` or `developer.americanwoodmark.com` — neither hostname
+  resolves (NXDOMAIN). Both appeared in an earlier version of this profile and were
+  removed on 2026-09-02 as unfounded.
+- `id.woodmark.com` is a real authorization server, but no public client registration
+  exists (no RFC 7591 registration_endpoint) and no resource server is described
+  (no RFC 9728 protected-resource metadata). Tokens cannot be obtained without
+  credentials issued by American Woodmark out of band.
+- woodmark.com is American Woodmark's own domain: www.woodmark.com returns HTTP 200
+  titled "American Woodmark" and redirects to www.americanwoodmark.com.
+
+---
+generated: 2026-09-02
+method: generated
+source: apis.yml + well-known/, authentication/, scopes/, conformance/, packages/ artifacts in this repository

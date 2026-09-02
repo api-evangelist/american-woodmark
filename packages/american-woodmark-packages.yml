@@ -1,0 +1,49 @@
+generated: '2026-09-02'
+method: searched
+source: >-
+  registry.npmjs.org search, pypi.org, github.com/AmericanWoodmark, and the
+  americanwoodmark.com sitemap
+specification: API Commons Packages
+specificationVersion: '0.1'
+provider: American Woodmark
+providerId: american-woodmark
+description: >-
+  Client-library search for American Woodmark. No first-party SDK, client
+  library or CLI is published in any public package registry, and the company's
+  GitHub organization holds zero public repositories. This is a recorded
+  absence, not an unchecked field.
+package_count: 0
+official_package_count: 0
+packages: []
+registries_searched:
+  - registry: npm
+    query: https://registry.npmjs.org/-/v1/search?text=woodmark
+    status: 200
+    result: >-
+      1 total result, unrelated (`logicstamp-mcp`). No American Woodmark
+      package. `american-woodmark` is unpublished.
+  - registry: pypi
+    query: https://pypi.org/pypi/american-woodmark/json
+    status: 404
+    result: Not published.
+  - registry: github
+    query: https://api.github.com/users/AmericanWoodmark
+    status: 200
+    result: >-
+      Organization exists (login AmericanWoodmark, name "American Woodmark",
+      website woodmark.com, created 2018-06-18) with public_repos = 0. No
+      source code, no SDK, no .proto, no spec published.
+  - registry: cdn
+    query: n/a
+    status: null
+    result: >-
+      No CDN-distributed first-party build found. The Online Ordering SPA at
+      go.woodmark.com loads only third-party libraries from jsDelivr
+      (bootstrap@5.2.0-beta1, @emailjs/browser@3) — vendor dependencies of
+      American Woodmark's own web app, not packages American Woodmark publishes.
+notes: >-
+  Because package_count is 0, NO `SDKs` pointer is emitted in apis.yml. The
+  sdk_count checks correctly score zero here.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

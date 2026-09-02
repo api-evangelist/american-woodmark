@@ -3,42 +3,48 @@ specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
 provider: American Woodmark
 providerId: american-woodmark
+generated: '2026-09-02'
+method: searched
+source: >-
+  https://www.americanwoodmark.com/sitemap.xml (HTTP 200, no developer or API
+  documentation) and https://id.woodmark.com/.well-known/openid-configuration
+  (HTTP 200, the only published contract; advertises no rate-limit metadata)
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
-reconciled: false
+modified: '2026-09-02'
+reconciled: true
 tags:
   - Cabinetry
   - Home Products
   - Construction
   - Rate Limiting
 description: >-
-  American Woodmark does not publish public API rate limits. Reconcile when public limits are published.
+  American Woodmark publishes no API rate limits. It has no developer
+  documentation, no API reference and no public API contract other than an
+  OpenID Connect discovery document, which carries no throttling metadata.
+  There is no documented window, quota, burst allowance or rate-limit response
+  header anywhere on its hosts.
+limit_count: 0
+limits: []
+headers: []
+headers_note: >-
+  No RateLimit-*, X-RateLimit-* or Retry-After behaviour is documented, and
+  none was observed: there is no public unauthenticated API endpoint to observe
+  one on.
 notes: >-
-  American Woodmark is a kitchen and bath cabinet manufacturer; it does not publish a public API developer portal with documented pricing or rate limits. Trading-partner integrations with home centers and homebuilders are governed by EDI and bilateral agreements. Reconcile if a public API is launched.
+  Upgraded 2026-09-02 from a `generated` bulk-sweep scaffold to a `searched`
+  honest zero. The previous version carried a placeholder limits[] entry
+  ("Undocumented - bilateral agreement") and asserted 429/503 response codes
+  that American Woodmark has never published. Both were removed — an invented
+  limit and an invented status code are worse than a recorded absence.
+  Trading-partner throughput is governed by EDI trade agreements, not by an
+  HTTP rate limit.
 sources:
-  - https://www.americanwoodmark.com
-responseCodes:
-  throttled: 429
-  serviceUnavailable: 503
-limits:
-  - name: Undocumented - bilateral agreement
-    scope: contract
-    metric: varies
-    limit: 'see partner agreement; not publicly documented'
-policies:
-  - name: Documentation Status
-    description: >-
-      American Woodmark does not publish public per-second or per-minute API rate
-      limits. Throughput, concurrency, and burst behavior are governed by the
-      relevant partner, supplier, or merchant agreement.
-  - name: Backoff Strategy
-    description: >-
-      Where any HTTP API is exposed, clients should implement exponential
-      backoff with jitter and honor any Retry-After header returned on 429
-      or 503 responses.
+  - url: https://www.americanwoodmark.com/sitemap.xml
+    status: 200
+    finding: 140 URLs; no developer, API or rate-limit documentation.
+  - url: https://id.woodmark.com/.well-known/openid-configuration
+    status: 200
+    finding: OIDC discovery document; contains no rate-limit fields.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

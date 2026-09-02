@@ -1,0 +1,96 @@
+{
+    "issuer": "https://id.woodmark.com",
+    "jwks_uri": "https://id.woodmark.com/.well-known/openid-configuration/jwks",
+    "authorization_endpoint": "https://id.woodmark.com/connect/authorize",
+    "token_endpoint": "https://id.woodmark.com/connect/token",
+    "userinfo_endpoint": "https://id.woodmark.com/connect/userinfo",
+    "end_session_endpoint": "https://id.woodmark.com/connect/endsession",
+    "check_session_iframe": "https://id.woodmark.com/connect/checksession",
+    "revocation_endpoint": "https://id.woodmark.com/connect/revocation",
+    "introspection_endpoint": "https://id.woodmark.com/connect/introspect",
+    "device_authorization_endpoint": "https://id.woodmark.com/connect/deviceauthorization",
+    "frontchannel_logout_supported": true,
+    "frontchannel_logout_session_supported": true,
+    "backchannel_logout_supported": true,
+    "backchannel_logout_session_supported": true,
+    "scopes_supported": [
+        "address",
+        "email",
+        "openid",
+        "phone",
+        "profile",
+        "roles",
+        "permissions",
+        "TestClient",
+        "offline_access"
+    ],
+    "claims_supported": [
+        "address",
+        "email_verified",
+        "email",
+        "sub",
+        "phone_number_verified",
+        "phone_number",
+        "zoneinfo",
+        "birthdate",
+        "gender",
+        "website",
+        "picture",
+        "profile",
+        "preferred_username",
+        "nickname",
+        "middle_name",
+        "given_name",
+        "family_name",
+        "name",
+        "locale",
+        "updated_at",
+        "role_name",
+        "summary",
+        "permission_name",
+        "MinimumVersion",
+        "MaximumVersion",
+        "permissions",
+        "roles"
+    ],
+    "grant_types_supported": [
+        "authorization_code",
+        "client_credentials",
+        "refresh_token",
+        "implicit",
+        "password",
+        "urn:ietf:params:oauth:grant-type:device_code"
+    ],
+    "response_types_supported": [
+        "code",
+        "token",
+        "id_token",
+        "id_token token",
+        "code id_token",
+        "code token",
+        "code id_token token"
+    ],
+    "response_modes_supported": [
+        "form_post",
+        "query",
+        "fragment"
+    ],
+    "token_endpoint_auth_methods_supported": [
+        "client_secret_basic",
+        "client_secret_post"
+    ],
+    "subject_types_supported": [
+        "public"
+    ],
+    "id_token_signing_alg_values_supported": [
+        "RS256"
+    ],
+    "code_challenge_methods_supported": [
+        "plain",
+        "S256"
+    ],
+    "request_parameter_supported": true,
+    "apikey_endpoint": "https://id.woodmark.com/api/resources/validateapikey",
+    "clientclaims_endpoint": "https://id.woodmark.com/api/client/claims",
+    "clientcredentials_endpoint": "https://id.woodmark.com/api/client/credentials"
+}

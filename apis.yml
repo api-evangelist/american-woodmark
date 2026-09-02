@@ -3,60 +3,151 @@ url: https://raw.githubusercontent.com/api-evangelist/american-woodmark/refs/hea
 name: American Woodmark
 type: Index
 deliveryModel:
-  model: unknown
+  model: internal
   open_source: false
   commercial: false
-  callable_host: false
-  label: Delivery model not determined — needs a product licence on record
-  confidence: low
+  callable_host: true
+  label: >-
+    No commercial API product. The one callable host American Woodmark publishes
+    is its own identity provider, serving its internal and dealer applications.
+  confidence: medium
   source:
-  - none
-  generated: '2026-08-28'
-  method: derived
+    - https://id.woodmark.com/.well-known/openid-configuration
+  generated: '2026-09-02'
+  method: probed
 accessModel:
-  pricing: unknown
-  onboarding: unknown
+  pricing: none
+  onboarding: bilateral
   trial: false
   try_now: false
   public: false
-  label: Unknown
-  confidence: low
+  label: >-
+    No public API access. Credentials for the identity provider and the Online
+    Ordering portal are issued to dealers and trade customers out of band.
+  confidence: medium
   source:
-  - plans
-  generated: '2026-07-22'
-  method: derived
+    - plans
+    - https://go.woodmark.com/onlineordering/orders
+  generated: '2026-09-02'
+  method: searched
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/american-woodmark.png
 tags:
   - Cabinetry
   - Home Products
   - Construction
+  - Building Products
+  - Manufacturing
+  - Kitchen and Bath
+  - Home Improvement
+  - Identity
+  - EDI
+  - Supply Chain
 description: >-
-  American Woodmark is a major US corporation and Fortune 1000 company. The American Woodmark API provides programmatic access to its platform services, data, and integrations for enterprise customers and partners.
+  American Woodmark Corporation (NASDAQ: AMWD) is one of the largest
+  manufacturers of kitchen, bath and home organization cabinetry in the United
+  States, headquartered in Winchester, Virginia and operating manufacturing
+  plants and service centers across the US and Mexico. It sells through home
+  centers, homebuilders and independent dealers under brands including
+  Timberlake, Waypoint Living Spaces, Shenandoah and 1951 Cabinetry. It is a
+  manufacturer rather than a software vendor and runs no developer program: it
+  publishes no API documentation, no OpenAPI, AsyncAPI, GraphQL or WSDL
+  contract, and no SDKs. The only machine-readable contract it serves publicly
+  is the OpenID Connect discovery document for its identity provider at
+  id.woodmark.com, which fronts its dealer Online Ordering application.
+  Trading-partner integration is conducted over ANSI ASC X12 EDI under bilateral
+  trade agreements rather than through a public HTTP API.
 created: '2026-04-19'
-modified: '2026-04-19'
+modified: '2026-09-02'
 specificationVersion: '0.23'
 apis:
-  - aid: american-woodmark:american-woodmark-api
-    name: American Woodmark API
+  - aid: american-woodmark:american-woodmark-identity
+    name: American Woodmark Identity Provider
     tags:
-      - Cabinetry
-      - Home Products
-      - Construction
+      - Identity
+      - OpenID Connect
+      - OAuth
+      - Authentication
     image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    baseURL: https://api.americanwoodmark.com
-    humanURL: https://developer.americanwoodmark.com
-    properties:
-      - url: https://developer.americanwoodmark.com/docs
-        type: Documentation
+    baseURL: https://id.woodmark.com
+    humanURL: https://id.woodmark.com
     description: >-
-      The American Woodmark API provides access to platform services and data for enterprise integration and automation.
+      American Woodmark's OpenID Connect / OAuth 2.0 authorization server, an
+      IdentityServer deployment that authenticates users of the company's dealer
+      and customer applications including the Online Ordering portal at
+      go.woodmark.com. It serves a complete, anonymous OIDC discovery document
+      and JWKS. It advertises the authorization_code, client_credentials,
+      refresh_token, implicit, password and RFC 8628 device_code grants, PKCE
+      with S256, RS256 ID tokens, token introspection and revocation, and both
+      front-channel and back-channel logout. There is no public client
+      registration (no RFC 7591 registration_endpoint) and no protected-resource
+      metadata (RFC 9728), so no resource server is discoverable and credentials
+      must be issued by American Woodmark out of band.
+    properties:
+      - type: OpenIDConnect
+        url: https://id.woodmark.com/.well-known/openid-configuration
+      - type: Authentication
+        url: authentication/american-woodmark-authentication.yml
+      - type: OAuthScopes
+        url: scopes/american-woodmark-scopes.yml
 common:
-  - type: DomainSecurity
-    url: security/american-woodmark-domain-security.yml
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/american-woodmark
   - type: Website
     url: https://www.americanwoodmark.com
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/american-woodmark
+  - type: GitHubOrganization
+    url: https://github.com/AmericanWoodmark
+  - type: Blog
+    url: https://www.americanwoodmark.com/our-story/articles
+  - type: Support
+    url: https://www.americanwoodmark.com/resources
+  - type: Login
+    url: https://go.woodmark.com/onlineordering/orders
+  - type: PrivacyPolicy
+    url: https://www.americanwoodmark.com/privacy-policy
+  - type: TermsOfService
+    url: https://www.americanwoodmark.com/terms-of-use
+  - type: WellKnown
+    url: well-known/american-woodmark-well-known.yml
+  - type: Authentication
+    url: authentication/american-woodmark-authentication.yml
+  - type: OAuthScopes
+    url: scopes/american-woodmark-scopes.yml
+  - type: Conformance
+    url: conformance/american-woodmark-conformance.yml
+  - type: Packages
+    url: packages/american-woodmark-packages.yml
+  - type: LLMsTxt
+    url: llms/american-woodmark-llms.txt
+  - type: Plans
+    url: plans/american-woodmark-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/american-woodmark-rate-limits.yml
+  - type: FinOps
+    url: finops/american-woodmark-finops.yml
+  - type: DomainSecurity
+    url: security/american-woodmark-domain-security.yml
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-09-02'
+  status: enriched
+  pass: local-v1
+  artifacts_added: 8
+x-removed-pointers:
+  note: >-
+    Removed 2026-09-02 by the enrichment pipeline. A prior round of this profile
+    declared an "American Woodmark API" on two hostnames that have never
+    existed. Both were confirmed NXDOMAIN (no A record) on 2026-09-02, and the
+    repo's own 2026-07-11 domain-security probe had already recorded https:false
+    for both. Recorded here so a later round does not reintroduce them.
+  removed:
+    - url: https://api.americanwoodmark.com
+      was: apis[0].baseURL
+      status: NXDOMAIN
+    - url: https://developer.americanwoodmark.com
+      was: apis[0].humanURL
+      status: NXDOMAIN
+    - url: https://developer.americanwoodmark.com/docs
+      was: apis[0].properties[] type Documentation
+      status: NXDOMAIN

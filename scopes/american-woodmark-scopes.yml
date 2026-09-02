@@ -1,0 +1,106 @@
+generated: '2026-09-02'
+method: probed
+source: https://id.woodmark.com/.well-known/openid-configuration
+specification: API Commons OAuth Scopes
+specificationVersion: '0.1'
+provider: American Woodmark
+providerId: american-woodmark
+description: >-
+  OAuth 2.0 / OpenID Connect scopes advertised by American Woodmark's identity
+  provider at id.woodmark.com, taken verbatim from the `scopes_supported` array
+  of its live discovery document. American Woodmark publishes no scope
+  reference page, so no description below is quoted from the provider — the
+  standard OIDC scopes carry their OIDC Core 1.0 §5.4 meaning and the
+  provider-specific ones are marked as undocumented rather than guessed at.
+authorization_server: https://id.woodmark.com
+authorization_url: https://id.woodmark.com/connect/authorize
+token_url: https://id.woodmark.com/connect/token
+docs: null
+docs_note: >-
+  No scopes/permissions reference page is published. The corporate site
+  (www.americanwoodmark.com) has no developer section — its sitemap.xml lists
+  140 URLs, none of which is developer, API or integration documentation.
+scope_count: 9
+scopes:
+  - name: openid
+    standard: OIDC Core 1.0
+    description: Requests an ID token; required for any OpenID Connect request.
+    documented_by_provider: false
+  - name: profile
+    standard: OIDC Core 1.0
+    description: >-
+      Default profile claims — name, family_name, given_name, middle_name,
+      nickname, preferred_username, picture, website, gender, birthdate,
+      zoneinfo, locale, updated_at.
+    documented_by_provider: false
+  - name: email
+    standard: OIDC Core 1.0
+    description: The email and email_verified claims.
+    documented_by_provider: false
+  - name: address
+    standard: OIDC Core 1.0
+    description: The address claim.
+    documented_by_provider: false
+  - name: phone
+    standard: OIDC Core 1.0
+    description: The phone_number and phone_number_verified claims.
+    documented_by_provider: false
+  - name: offline_access
+    standard: OIDC Core 1.0
+    description: Requests a refresh token for access when the user is not present.
+    documented_by_provider: false
+  - name: roles
+    standard: provider-specific
+    description: >-
+      Releases the `roles` and `role_name` claims (both appear in
+      claims_supported). American Woodmark publishes no description of what
+      roles exist or what they grant.
+    documented_by_provider: false
+  - name: permissions
+    standard: provider-specific
+    description: >-
+      Releases the `permissions` and `permission_name` claims (both appear in
+      claims_supported). The permission vocabulary is not published.
+    documented_by_provider: false
+  - name: TestClient
+    standard: provider-specific
+    description: >-
+      Named scope advertised on the PRODUCTION issuer. Its purpose is not
+      documented. Recorded verbatim because it is in scopes_supported; no
+      meaning is inferred.
+    documented_by_provider: false
+    note: A test-shaped scope advertised on a production authorization server.
+claims_supported:
+  - address
+  - email_verified
+  - email
+  - sub
+  - phone_number_verified
+  - phone_number
+  - zoneinfo
+  - birthdate
+  - gender
+  - website
+  - picture
+  - profile
+  - preferred_username
+  - nickname
+  - middle_name
+  - given_name
+  - family_name
+  - name
+  - locale
+  - updated_at
+  - role_name
+  - summary
+  - permission_name
+  - MinimumVersion
+  - MaximumVersion
+  - permissions
+  - roles
+claims_note: >-
+  `MinimumVersion` and `MaximumVersion` are non-standard claims, suggesting the
+  IdP pins a client-version floor/ceiling per token. Undocumented.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

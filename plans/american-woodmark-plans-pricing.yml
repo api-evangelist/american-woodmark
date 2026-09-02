@@ -3,43 +3,42 @@ specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
 provider: American Woodmark
 providerId: american-woodmark
+generated: '2026-09-02'
+method: searched
+source: >-
+  https://www.americanwoodmark.com/sitemap.xml (HTTP 200, 140 URLs, no pricing
+  or plans page) and https://www.americanwoodmark.com/ (HTTP 200)
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
-reconciled: false
+modified: '2026-09-02'
+reconciled: true
 tags:
   - Cabinetry
   - Home Products
   - Construction
 description: >-
-  American Woodmark does not publish public API plans or pricing. Customer integrations (home centers, homebuilders, dealers) are governed by EDI and bilateral trade agreements rather than a public API price list. Reconcile if a public API offering is launched.
+  American Woodmark publishes no API plans and no API pricing of any kind — not
+  a tier list, not a "contact sales" API page, not an enterprise API offering.
+  It is a cabinet manufacturer with no developer program. Its published pricing
+  surface is product pricing through home centers, builders and dealers, which
+  is not an API price list.
+plan_count: 0
+plans: []
 notes: >-
-  American Woodmark is a kitchen and bath cabinet manufacturer; it does not publish a public API developer portal with documented pricing or rate limits. Trading-partner integrations with home centers and homebuilders are governed by EDI and bilateral agreements. Reconcile if a public API is launched.
+  Upgraded 2026-09-02 from a `generated` bulk-sweep scaffold to a `searched`
+  honest zero. The previous version of this file carried a single placeholder
+  plan entry ("american-woodmark-overview", price "contact sales") that API
+  Evangelist authored, not American Woodmark. That placeholder was removed
+  because it read as a plan the company publishes; it does not. The full
+  sitemap was walked and contains no pricing, plans, developer or API page.
+  Commercial terms with home centers, homebuilders and dealers are set in
+  bilateral trade agreements and settled over EDI, not through a metered API.
 sources:
-  - https://www.americanwoodmark.com
-plans:
-  - id: american-woodmark-overview
-    name: American Woodmark - Pricing Overview
-    type: enterprise
-    description: >-
-      Placeholder plan reflecting that American Woodmark does not publish a public,
-      machine-readable API price list. Pricing is bespoke per engagement.
-    entries:
-      - label: API Access
-        name: api_access
-        type: flat
-        metric: varies
-        limit: -1
-        timeFrame: usage
-        geo: global
-        unit: 1
-        price: contact sales
-        userMultiplied: false
-    elements:
-      - name: Negotiated Access
-      - name: Bilateral Agreement
+  - url: https://www.americanwoodmark.com/sitemap.xml
+    status: 200
+    finding: 140 URLs; no pricing, plans, developer or API path.
+  - url: https://www.americanwoodmark.com/
+    status: 200
+    finding: No developer or pricing navigation.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

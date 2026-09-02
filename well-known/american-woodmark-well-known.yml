@@ -1,0 +1,105 @@
+generated: '2026-09-02'
+method: probed
+source: live GET of the named /.well-known/ path list on every host in apis.yml
+specification: API Commons Well-Known
+specificationVersion: '0.1'
+provider: American Woodmark
+providerId: american-woodmark
+description: >-
+  Well-known document probe for American Woodmark. The corporate host
+  www.americanwoodmark.com serves no /.well-known/ documents at all (it does not
+  even serve robots.txt). The company's identity provider at id.woodmark.com —
+  the same registrable domain that www.woodmark.com redirects from to
+  www.americanwoodmark.com — DOES serve a complete, anonymous OpenID Connect
+  discovery document plus its JWKS. That pair is the only machine-readable
+  contract American Woodmark publishes anywhere.
+ownership_note: >-
+  woodmark.com is American Woodmark's own domain: https://www.woodmark.com/
+  returns an HTTP 200 whose title is "American Woodmark" and which redirects to
+  www.americanwoodmark.com, and the company's GitHub organization
+  (github.com/AmericanWoodmark, name "American Woodmark") lists
+  http://woodmark.com as its blog/website field.
+hosts:
+  - host: id.woodmark.com
+    note: >-
+      IdentityServer (Duende/IdentityServer4 shape — /connect/* endpoints).
+      Anonymous discovery is served; the two 200s below are real JSON documents,
+      not SPA shells. All misses returned an empty body with a 404, so this host
+      has no catch-all.
+    documents:
+      - path: /.well-known/openid-configuration
+        status: 200
+        file: american-woodmark-openid-configuration.json
+        content_type: application/json; charset=UTF-8
+      - path: /.well-known/openid-configuration/jwks
+        status: 200
+        file: american-woodmark-jwks.json
+        content_type: application/json; charset=UTF-8
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: www.americanwoodmark.com
+    note: >-
+      Corporate marketing site. Every /.well-known/ path returns the site's
+      styled 404 page (HTTP 404, text/html). No security.txt, no api-catalog.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: go.woodmark.com
+    note: >-
+      Dealer/customer Online Ordering portal (Angular SPA at /onlineordering/).
+      Every /.well-known/ path returns an IIS-styled 404. Note the SPA route
+      /onlineordering/assets/*.json answers 200 with the index.html shell — a
+      soft-200, recorded here so a later run does not mistake it for a document.
+    documents:
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+  - host: api.americanwoodmark.com
+    note: >-
+      Declared as baseURL in a prior round of this profile. The hostname does
+      NOT RESOLVE (NXDOMAIN) — no A record. Nothing was ever served here.
+    documents: []
+  - host: developer.americanwoodmark.com
+    note: >-
+      Declared as humanURL in a prior round of this profile. The hostname does
+      NOT RESOLVE (NXDOMAIN) — no A record. Nothing was ever served here.
+    documents: []
+summary:
+  hosts_probed: 5
+  documents_served: 2
+  documents_absent: 27
+  hosts_nxdomain: 2
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

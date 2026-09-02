@@ -1,0 +1,141 @@
+generated: '2026-09-02'
+method: probed
+source: https://id.woodmark.com/.well-known/openid-configuration
+specification: API Commons Authentication
+specificationVersion: '0.1'
+provider: American Woodmark
+providerId: american-woodmark
+description: >-
+  Authentication profile for American Woodmark, read directly from the live
+  OpenID Connect discovery document its identity provider serves anonymously at
+  id.woodmark.com. There is no OpenAPI to derive securitySchemes from and no
+  public developer documentation, so every field below is taken verbatim from
+  the discovery document rather than from prose.
+ownership_note: >-
+  woodmark.com is American Woodmark's own registrable domain —
+  https://www.woodmark.com/ returns 200 titled "American Woodmark" and
+  redirects to www.americanwoodmark.com, and github.com/AmericanWoodmark lists
+  woodmark.com as its website.
+issuer: https://id.woodmark.com
+platform: >-
+  IdentityServer (Duende / IdentityServer4 endpoint shape — /connect/authorize,
+  /connect/token, /connect/introspect, /connect/revocation)
+schemes:
+  - name: openIdConnect
+    type: openIdConnect
+    openIdConnectUrl: https://id.woodmark.com/.well-known/openid-configuration
+    description: >-
+      Full OpenID Connect provider. Discovery, JWKS, userinfo, session
+      management and both front-channel and back-channel logout are advertised.
+    in: header
+    scheme: bearer
+    bearer_format: JWT
+  - name: oauth2
+    type: oauth2
+    description: >-
+      OAuth 2.0 authorization server co-located with the OIDC provider. Six
+      grant types are advertised, including client_credentials for
+      machine-to-machine access and the RFC 8628 device authorization grant.
+    flows:
+      authorizationCode:
+        authorizationUrl: https://id.woodmark.com/connect/authorize
+        tokenUrl: https://id.woodmark.com/connect/token
+        refreshUrl: https://id.woodmark.com/connect/token
+      clientCredentials:
+        tokenUrl: https://id.woodmark.com/connect/token
+      implicit:
+        authorizationUrl: https://id.woodmark.com/connect/authorize
+      password:
+        tokenUrl: https://id.woodmark.com/connect/token
+      deviceCode:
+        deviceAuthorizationUrl: https://id.woodmark.com/connect/deviceauthorization
+        tokenUrl: https://id.woodmark.com/connect/token
+  - name: apiKey
+    type: apiKey
+    in: header
+    description: >-
+      The discovery document advertises a non-standard `apikey_endpoint` at
+      https://id.woodmark.com/api/resources/validateapikey, indicating an API
+      key credential is validated alongside the OAuth/OIDC tokens. The key
+      header name, format and issuance flow are NOT published — American
+      Woodmark documents none of this publicly. Recorded because the endpoint
+      is advertised, not because its usage is documented.
+endpoints:
+  authorization: https://id.woodmark.com/connect/authorize
+  token: https://id.woodmark.com/connect/token
+  userinfo: https://id.woodmark.com/connect/userinfo
+  jwks: https://id.woodmark.com/.well-known/openid-configuration/jwks
+  introspection: https://id.woodmark.com/connect/introspect
+  revocation: https://id.woodmark.com/connect/revocation
+  end_session: https://id.woodmark.com/connect/endsession
+  check_session_iframe: https://id.woodmark.com/connect/checksession
+  device_authorization: https://id.woodmark.com/connect/deviceauthorization
+  apikey_validation: https://id.woodmark.com/api/resources/validateapikey
+  client_claims: https://id.woodmark.com/api/client/claims
+  client_credentials: https://id.woodmark.com/api/client/credentials
+grant_types_supported:
+  - authorization_code
+  - client_credentials
+  - refresh_token
+  - implicit
+  - password
+  - urn:ietf:params:oauth:grant-type:device_code
+response_types_supported:
+  - code
+  - token
+  - id_token
+  - id_token token
+  - code id_token
+  - code token
+  - code id_token token
+response_modes_supported:
+  - form_post
+  - query
+  - fragment
+token_endpoint_auth_methods_supported:
+  - client_secret_basic
+  - client_secret_post
+pkce:
+  supported: true
+  code_challenge_methods_supported:
+    - plain
+    - S256
+  note: >-
+    S256 is offered, but `plain` is also still advertised. RFC 7636 §7.2 and
+    OAuth 2.1 both require S256 for public clients; advertising `plain`
+    permits a downgrade.
+id_token:
+  signing_alg_values_supported:
+    - RS256
+  subject_types_supported:
+    - public
+logout:
+  frontchannel_logout_supported: true
+  frontchannel_logout_session_supported: true
+  backchannel_logout_supported: true
+  backchannel_logout_session_supported: true
+dynamic_client_registration:
+  supported: false
+  note: >-
+    No `registration_endpoint` is advertised in the discovery document, so
+    RFC 7591 dynamic client registration is not available. Clients must be
+    provisioned out of band by American Woodmark.
+observations:
+  - >-
+    `password` (Resource Owner Password Credentials) and `implicit` are both
+    still advertised. Both are removed in OAuth 2.1 and discouraged by the
+    OAuth Security BCP (RFC 9700).
+  - >-
+    A `TestClient` scope is advertised in scopes_supported on the production
+    issuer — see scopes/american-woodmark-scopes.yml.
+  - >-
+    No /.well-known/oauth-protected-resource is served (404), so RFC 9728
+    protected-resource metadata is absent and an agent cannot discover which
+    resource server these tokens are for.
+gaps:
+  - No public developer documentation describes how to obtain a client_id.
+  - No published scope-to-operation mapping; no API reference of any kind.
+  - No OpenAPI, AsyncAPI, GraphQL SDL, WSDL or .proto published anywhere.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
