@@ -1,4 +1,4 @@
-# American Woodmark (american-woodmark)
+# American Woodmark
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,23 +64,113 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-American Woodmark is a major US corporation and Fortune 1000 company. The American Woodmark API provides programmatic access to its platform services, data, and integrations for enterprise customers and partners.
+American Woodmark Corporation (NASDAQ: AMWD) is one of the largest manufacturers of kitchen, bath and home organization cabinetry in the United States, headquartered in Winchester, Virginia and operating manufacturing plants and service centers across the US and Mexico. It sells through home centers, homebuilders and independent dealers under brands including Timberlake, Waypoint Living Spaces, Shenandoah and 1951 Cabinetry. It is a manufacturer rather than a software vendor and runs no developer program: it publishes no API documentation, no OpenAPI, AsyncAPI, GraphQL or WSDL contract, and no SDKs. The only machine-readable contract it serves publicly is the OpenID Connect discovery document for its identity provider at id.woodmark.com, which fronts its dealer Online Ordering application. Trading-partner integration is conducted over ANSI ASC X12 EDI under bilateral trade agreements rather than through a public HTTP API.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/american-woodmark/refs/heads/main/apis.yml)
+**Areas:** Cabinetry · Home Products · Construction · Building Products · Manufacturing · Kitchen and Bath · Home Improvement · Identity · EDI · Supply Chain
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## American Woodmark on APIs.io
 
-## Tags:
+Everything profiled for American Woodmark is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/american-woodmark/](https://apis.io/providers/american-woodmark/)** — or go straight to one of the APIs or properties below.
 
- - Cabinetry, Home Products, Construction
+### APIs (1)
 
-## Timestamps
+- [American Woodmark Identity Provider](https://apis.io/apis/american-woodmark/american-woodmark-identity/) — American Woodmark's OpenID Connect / OAuth 2.0 authorization server, an IdentityServer deployment that authenticates users of the company's dealer and…
 
-- **Created:** 2026-04-19
-- **Modified:** 2026-04-19
+### Published properties
 
-## Maintainers
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-**FN:** Kin Lane
+#### Security (2)
 
-**Email:** kin@apievangelist.com
+Authentication, trust centre, and vulnerability disclosure.
+
+- [American Woodmark Authentication](https://apis.io/security/american-woodmark/american-woodmark-authentication/)
+- [American Woodmark Domain Security](https://apis.io/security/american-woodmark/american-woodmark-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [American Woodmark Scopes](https://apis.io/scopes/american-woodmark/american-woodmark-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [American Woodmark Plans Pricing](https://apis.io/plans/american-woodmark/american-woodmark-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [American Woodmark Rate Limits](https://apis.io/rate-limits/american-woodmark/american-woodmark-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [American Woodmark Finops](https://apis.io/finops/american-woodmark/american-woodmark-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.americanwoodmark.com)
+- [Support](https://www.americanwoodmark.com/resources)
+- [Blog](https://www.americanwoodmark.com/our-story/articles)
+- [Terms of service](https://www.americanwoodmark.com/terms-of-use)
+- [Privacy policy](https://www.americanwoodmark.com/privacy-policy)
+- [GitHub](https://github.com/AmericanWoodmark)
+
+## API Evangelist rating
+
+**Kin Score 22.0** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 19.0 |
+| Access clarity | 27.6 |
+
+**Agent readiness 13.3** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 34.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/american-woodmark/](https://apis.io/providers/american-woodmark/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for American Woodmark: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/american-woodmark/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
